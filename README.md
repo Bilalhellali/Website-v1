@@ -1,16 +1,51 @@
-# React + Vite
+# VoyageAlgérie - Site Web Agence de Voyage
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site web professionnel pour agence de voyage algérienne.
+Stack : **React 19 + Vite + Tailwind CSS 4 + React Router + Framer Motion**
 
-Currently, two official plugins are available:
+## 🚀 Démarrage rapide
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install --legacy-peer-deps
+npm run dev
+```
 
-## React Compiler
+## 📦 Build & Déploiement Netlify
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run build
+# Le dossier `dist/` est prêt pour Netlify
+```
 
-## Expanding the ESLint configuration
+## ⚙️ Personnalisation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Tout se configure dans **`src/config/siteConfig.js`** :
+- Nom de l'agence
+- Coordonnées & réseaux sociaux
+- Destinations & circuits
+- Témoignages & FAQ
+- Couleurs du thème
+
+## 🌍 Langues supportées
+
+- 🇫🇷 Français (défaut)
+- 🇩🇿 Arabe (RTL)
+- 🇬🇧 Anglais
+
+Fichiers de traduction : `src/locales/`
+
+## 📁 Structure
+
+```
+src/
+├── config/
+│   └── siteConfig.js     ← CONFIGURATION CENTRALISÉE
+├── components/
+│   ├── layout/           ← Navbar, Footer, Layout
+│   ├── ui/               ← Composants réutilisables
+│   └── sections/         ← Sections page d'accueil
+├── pages/                ← Toutes les pages
+├── locales/              ← Traductions FR/AR/EN
+├── i18n.js               ← Config multilingue
+└── main.jsx
+```

@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "destinations": "Destinations",
+    "circuits": "Tours",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "quote": "Free Quote"
+  },
+  "footer": {
+    "links": "Navigation",
+    "popularDestinations": "Popular Destinations",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "madeWith": "Made with",
+    "inAlgeria": "in Algeria"
+  },
+  "hero": {
+    "badge": "Certified travel agency",
+    "title": "Discover Algeria",
+    "subtitle": "Authentic and unforgettable journeys through the wonders of Algeria — from the majestic Sahara to the Mediterranean coast.",
+    "cta": {
+      "explore": "Explore destinations",
+      "quote": "Request a quote"
+    },
+    "stats": {
+      "destinations": "Destinations",
+      "clients": "Happy travelers",
+      "rating": "Average rating"
+    }
+  },
+  "destinations": {
+    "sectionLabel": "Our destinations",
+    "title": "Popular Destinations",
+    "subtitle": "Explore the most beautiful corners of Algeria, carefully selected by our experts.",
+    "viewAll": "View all destinations",
+    "pageTitle": "All our destinations",
+    "pageSubtitle": "Discover all our destinations across Algeria."
+  },
+  "whyUs": {
+    "title": "Why choose us?",
+    "subtitle": "We do everything to offer you an exceptional travel experience.",
+    "features": {
+      "safety": { "title": "Safe travels", "desc": "Your safety is our absolute priority. All our tours are designed to ensure your peace of mind." },
+      "passion": { "title": "Passion for travel", "desc": "Our team consists of enthusiasts who know Algeria in every detail." },
+      "support": { "title": "24/7 Support", "desc": "We are available at any time, before, during and after your trip." },
+      "expertise": { "title": "Local expertise", "desc": "10 years of experience in Algeria to offer you authentic and unique experiences." },
+      "quality": { "title": "Guaranteed quality", "desc": "Carefully selected accommodations and certified professional guides." },
+      "fast": { "title": "Quick quote", "desc": "Receive your personalized quote in less than 24 hours. Free and with no obligation." }
+    }
+  },
+  "testimonials": {
+    "title": "They trust us",
+    "subtitle": "Thousands of travelers have lived unforgettable adventures with us."
+  },
+  "cta": {
+    "title": "Ready for your next adventure?",
+    "subtitle": "Contact us today and start planning your dream trip to Algeria.",
+    "quoteBtn": "Get a free quote"
+  },
+  "about": {
+    "pageTitle": "About us",
+    "title": "Our story",
+    "subtitle": "An Algerian agency at the service of your discovery.",
+    "stats": {
+      "clients": "Happy travelers",
+      "years": "Years of experience",
+      "destinations": "Destinations",
+      "satisfaction": "Satisfaction rate"
+    },
+    "storyLabel": "Our story",
+    "storyTitle": "A passion for Algeria",
+    "story1": "Founded by travel enthusiasts, our agency was born from a strong conviction: Algeria is one of the most beautiful destinations in the world, still too unknown.",
+    "story2": "Since our beginnings, we have specialized in creating authentic circuits that showcase the cultural, natural and human richness of our country.",
+    "story3": "Every trip we organize is a promise of discovery, wonder and unforgettable encounters.",
+    "values": {
+      "title": "Our values",
+      "authenticity": { "title": "Authenticity", "desc": "Real experiences, far from mass tourism." },
+      "safety": { "title": "Safety", "desc": "Your safety first, at every step of the journey." },
+      "quality": { "title": "Quality", "desc": "Premium services at fair prices." },
+      "sustainability": { "title": "Sustainability", "desc": "Responsible tourism, respectful of local communities." }
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "A question? A travel project? We're here to help.",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Office hours",
+    "hoursValue": "Mon-Fri 8am-6pm / Sat 9am-1pm",
+    "formTitle": "Send us a message"
+  },
+  "quote": {
+    "title": "Quote Request",
+    "subtitle": "Fill in this form and receive your personalized quote within 24h. Free, no obligation.",
+    "destination": "Desired destination",
+    "departureDate": "Departure date",
+    "duration": "Duration",
+    "travelers": "Number of travelers",
+    "budget": "Estimated budget",
+    "notes": "Notes / Special requests",
+    "notesPlaceholder": "Accommodation type, activities, dietary requirements, reduced mobility...",
+    "submit": "Send my request"
+  },
+  "form": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "messagePlaceholder": "Your message...",
+    "send": "Send",
+    "sending": "Sending..."
+  }
+}

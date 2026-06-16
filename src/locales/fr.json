@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "destinations": "Destinations",
+    "circuits": "Circuits",
+    "gallery": "Galerie",
+    "contact": "Contact",
+    "quote": "Devis gratuit"
+  },
+  "footer": {
+    "links": "Navigation",
+    "popularDestinations": "Destinations populaires",
+    "contact": "Contact",
+    "rights": "Tous droits réservés.",
+    "madeWith": "Fait avec",
+    "inAlgeria": "en Algérie"
+  },
+  "hero": {
+    "badge": "Agence de voyage certifiée",
+    "title": "Découvrez l'Algérie",
+    "subtitle": "Des voyages authentiques et inoubliables à travers les merveilles de l'Algérie — du Sahara majestueux aux côtes méditerranéennes.",
+    "cta": {
+      "explore": "Explorer les destinations",
+      "quote": "Demander un devis"
+    },
+    "stats": {
+      "destinations": "Destinations",
+      "clients": "Voyageurs satisfaits",
+      "rating": "Note moyenne"
+    }
+  },
+  "destinations": {
+    "sectionLabel": "Nos destinations",
+    "title": "Destinations Populaires",
+    "subtitle": "Explorez les plus beaux coins de l'Algérie, soigneusement sélectionnés par nos experts.",
+    "viewAll": "Voir toutes les destinations",
+    "pageTitle": "Toutes nos destinations",
+    "pageSubtitle": "Découvrez l'ensemble de nos destinations à travers l'Algérie."
+  },
+  "whyUs": {
+    "title": "Pourquoi nous choisir ?",
+    "subtitle": "Nous mettons tout en œuvre pour vous offrir une expérience de voyage exceptionnelle.",
+    "features": {
+      "safety": { "title": "Voyages sécurisés", "desc": "Votre sécurité est notre priorité absolue. Tous nos circuits sont étudiés pour garantir votre sérénité." },
+      "passion": { "title": "Passion du voyage", "desc": "Notre équipe est composée de passionnés qui connaissent l'Algérie dans ses moindres détails." },
+      "support": { "title": "Support 24/7", "desc": "Nous sommes disponibles à tout moment, avant, pendant et après votre voyage." },
+      "expertise": { "title": "Expertise locale", "desc": "10 ans d'expérience en Algérie pour vous offrir des expériences authentiques et uniques." },
+      "quality": { "title": "Qualité garantie", "desc": "Des hébergements soigneusement sélectionnés et des guides professionnels certifiés." },
+      "fast": { "title": "Devis rapide", "desc": "Recevez votre devis personnalisé en moins de 24h. Gratuit et sans engagement." }
+    }
+  },
+  "testimonials": {
+    "title": "Ils nous font confiance",
+    "subtitle": "Des milliers de voyageurs ont vécu des aventures inoubliables avec nous."
+  },
+  "cta": {
+    "title": "Prêt pour votre prochaine aventure ?",
+    "subtitle": "Contactez-nous dès aujourd'hui et commencez à planifier votre voyage de rêve en Algérie.",
+    "quoteBtn": "Obtenir un devis gratuit"
+  },
+  "about": {
+    "pageTitle": "À propos",
+    "title": "Notre histoire",
+    "subtitle": "Une agence algérienne au service de votre découverte.",
+    "stats": {
+      "clients": "Voyageurs heureux",
+      "years": "Années d'expérience",
+      "destinations": "Destinations",
+      "satisfaction": "Taux de satisfaction"
+    },
+    "storyLabel": "Notre histoire",
+    "storyTitle": "Une passion pour l'Algérie",
+    "story1": "Fondée par des passionnés de voyage, notre agence est née d'une conviction forte : l'Algérie est l'une des plus belles destinations au monde, encore trop méconnue.",
+    "story2": "Depuis nos débuts, nous nous sommes spécialisés dans la création de circuits authentiques qui mettent en valeur la richesse culturelle, naturelle et humaine de notre pays.",
+    "story3": "Chaque voyage que nous organisons est une promesse de découverte, d'émerveillement et de rencontres inoubliables.",
+    "values": {
+      "title": "Nos valeurs",
+      "authenticity": { "title": "Authenticité", "desc": "Des expériences vraies, loin du tourisme de masse." },
+      "safety": { "title": "Sécurité", "desc": "Votre sécurité avant tout, à chaque étape du voyage." },
+      "quality": { "title": "Qualité", "desc": "Des prestations haut de gamme à des prix justes." },
+      "sustainability": { "title": "Durabilité", "desc": "Un tourisme responsable, respectueux des communautés locales." }
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Une question ? Un projet de voyage ? Nous sommes là pour vous aider.",
+    "phone": "Téléphone",
+    "email": "Email",
+    "address": "Adresse",
+    "hours": "Horaires",
+    "hoursValue": "Lun-Ven 8h-18h / Sam 9h-13h",
+    "formTitle": "Envoyez-nous un message"
+  },
+  "quote": {
+    "title": "Demande de Devis",
+    "subtitle": "Remplissez ce formulaire et recevez votre devis personnalisé sous 24h. Gratuit, sans engagement.",
+    "destination": "Destination souhaitée",
+    "departureDate": "Date de départ",
+    "duration": "Durée",
+    "travelers": "Nombre de voyageurs",
+    "budget": "Budget estimé",
+    "notes": "Notes / Demandes particulières",
+    "notesPlaceholder": "Type d'hébergement souhaité, activités, régime alimentaire, mobilité réduite...",
+    "submit": "Envoyer ma demande"
+  },
+  "form": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "message": "Message",
+    "messagePlaceholder": "Votre message...",
+    "send": "Envoyer",
+    "sending": "Envoi en cours..."
+  }
+}
