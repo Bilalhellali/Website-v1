@@ -5,7 +5,7 @@
 
 export const siteConfig = {
   // --- IDENTITÉ DE L'AGENCE ---
-  name: "VoyageAlgérie",           // Nom de l'agence (à changer)
+  name: "AviaTours",           // Nom de l'agence (à changer)
   tagline: "Votre Algérie, autrement",
   taglineAr: "الجزائر كما لم تعرفها من قبل",
   description: "Agence de voyage spécialisée dans les circuits en Algérie. Découvrez le Sahara, les côtes méditerranéennes et les merveilles du Tell.",
