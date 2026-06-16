@@ -16,7 +16,7 @@ function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 bg-[#F39C12] rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">V</span>
+                <span className="text-white font-bold text-lg">A</span>
               </div>
               <span className="text-xl font-bold text-white">{siteConfig.name}</span>
             </div>
@@ -39,11 +39,11 @@ function Footer() {
             <ul className="space-y-2 text-sm">
               {[
                 { to: '/', label: t('nav.home') },
-                { to: '/about', label: t('nav.about') },
-                { to: '/destinations', label: t('nav.destinations') },
-                { to: '/circuits', label: t('nav.circuits') },
-                { to: '/galerie', label: t('nav.gallery') },
+                { to: '/voyages-organises', label: t('nav.voyages') },
+                { to: '/visa', label: t('nav.visa') },
+                { to: '/hotels', label: t('nav.hotels') },
                 { to: '/contact', label: t('nav.contact') },
+                { to: '/about', label: t('nav.about') },
               ].map((link) => (
                 <li key={link.to}>
                   <Link to={link.to} className="hover:text-[#F39C12] transition-colors">
@@ -54,14 +54,14 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Colonne 3 - Destinations populaires */}
+          {/* Colonne 3 - Nos services */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-4">{t('footer.popularDestinations')}</h3>
+            <h3 className="text-white font-semibold text-lg mb-4">{t('footer.services')}</h3>
             <ul className="space-y-2 text-sm">
-              {siteConfig.destinations.slice(0, 6).map((dest) => (
-                <li key={dest.id}>
-                  <Link to={`/destinations/${dest.slug}`} className="hover:text-[#F39C12] transition-colors">
-                    → {dest.name.fr}
+              {siteConfig.services.map((service) => (
+                <li key={service.id}>
+                  <Link to={service.to} className="hover:text-[#F39C12] transition-colors">
+                    → {service.title}
                   </Link>
                 </li>
               ))}

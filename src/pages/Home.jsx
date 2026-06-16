@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { siteConfig } from '../config/siteConfig'
 import Hero from '../components/sections/Hero'
-import FeaturedDestinations from '../components/sections/FeaturedDestinations'
+import Services from '../components/sections/Services'
 import WhyUs from '../components/sections/WhyUs'
 import Testimonials from '../components/sections/Testimonials'
 import CTABanner from '../components/sections/CTABanner'
@@ -19,7 +19,7 @@ function Home() {
         <meta property="og:description" content={siteConfig.description} />
       </Helmet>
       <Hero />
-      <FeaturedDestinations />
+      <Services />
       <WhyUs />
       <Testimonials />
       <CTABanner />

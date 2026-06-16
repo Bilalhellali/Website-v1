@@ -6,6 +6,9 @@ import LoadingSpinner from './components/ui/LoadingSpinner'
 // Lazy loading des pages pour optimiser les performances
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
+const VoyagesOrganises = lazy(() => import('./pages/VoyagesOrganises'))
+const Visa = lazy(() => import('./pages/Visa'))
+const Hotels = lazy(() => import('./pages/Hotels'))
 const Destinations = lazy(() => import('./pages/Destinations'))
 const DestinationDetail = lazy(() => import('./pages/DestinationDetail'))
 const Circuits = lazy(() => import('./pages/Circuits'))
@@ -23,6 +26,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/voyages-organises" element={<VoyagesOrganises />} />
+            <Route path="/visa" element={<Visa />} />
+            <Route path="/hotels" element={<Hotels />} />
             <Route path="/destinations" element={<Destinations />} />
             <Route path="/destinations/:slug" element={<DestinationDetail />} />
             <Route path="/circuits" element={<Circuits />} />

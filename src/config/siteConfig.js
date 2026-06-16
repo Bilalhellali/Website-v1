@@ -5,10 +5,10 @@
 
 export const siteConfig = {
   // --- IDENTITÉ DE L'AGENCE ---
-  name: "AviaTours",           // Nom de l'agence (à changer)
-  tagline: "Votre Algérie, autrement",
-  taglineAr: "الجزائر كما لم تعرفها من قبل",
-  description: "Agence de voyage spécialisée dans les circuits en Algérie. Découvrez le Sahara, les côtes méditerranéennes et les merveilles du Tell.",
+  name: "AviaTours",           // Nom de l'agence
+  tagline: "Votre voyage, notre expertise",
+  taglineAr: "رحلتك، خبرتنا",
+  description: "AviaTours, votre agence de voyage de confiance : voyages organisés en groupe, demandes de visa et réservations d'hôtels. Un accompagnement de A à Z, en toute sérénité.",
 
   // --- COORDONNÉES ---
   contact: {
@@ -35,6 +35,35 @@ export const siteConfig = {
     defaultLocale: "fr",
     supportedLocales: ["fr", "ar", "en"],
   },
+
+  // --- NOS SERVICES (3 piliers) ---
+  // icon = nom d'une icône lucide-react (voir lucide.dev)
+  services: [
+    {
+      id: "voyages",
+      icon: "Plane",
+      title: "Voyages Organisés",
+      desc: "Des séjours en groupe clés en main : vol, hébergement, guide et programme complet.",
+      to: "/voyages-organises",
+      points: ["Départs garantis", "Guide francophone", "Formule tout inclus"],
+    },
+    {
+      id: "visa",
+      icon: "FileCheck",
+      title: "Visa",
+      desc: "Constitution et suivi complet de votre dossier de visa pour un traitement rapide et fiable.",
+      to: "/visa",
+      points: ["Dossier vérifié", "Suivi personnalisé", "Gain de temps"],
+    },
+    {
+      id: "hotels",
+      icon: "BedDouble",
+      title: "Hôtels",
+      desc: "Réservation d'hôtels au meilleur prix, du 3 au 5 étoiles, partout dans le monde.",
+      to: "/hotels",
+      points: ["Meilleurs tarifs", "Confirmation immédiate", "Annulation flexible"],
+    },
+  ],
 
   // --- DESTINATIONS POPULAIRES ---
   destinations: [

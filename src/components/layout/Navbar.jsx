@@ -31,12 +31,11 @@ function Navbar() {
 
   const navLinks = [
     { to: '/', label: t('nav.home') },
-    { to: '/about', label: t('nav.about') },
-    { to: '/destinations', label: t('nav.destinations') },
-    { to: '/circuits', label: t('nav.circuits') },
-    { to: '/galerie', label: t('nav.gallery') },
-    { to: '/faq', label: 'FAQ' },
+    { to: '/voyages-organises', label: t('nav.voyages') },
+    { to: '/visa', label: t('nav.visa') },
+    { to: '/hotels', label: t('nav.hotels') },
     { to: '/contact', label: t('nav.contact') },
+    { to: '/about', label: t('nav.about') },
   ]
 
   return (
@@ -66,7 +65,7 @@ function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="w-10 h-10 bg-[#1B4F72] rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-lg">V</span>
+            <span className="text-white font-bold text-lg">A</span>
           </div>
           <span className={`text-xl font-bold transition-colors ${
             isScrolled ? 'text-[#1B4F72]' : 'text-white drop-shadow-md'

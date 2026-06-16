@@ -2,13 +2,16 @@ import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react'
 import { siteConfig } from '../config/siteConfig'
 import SectionWrapper from '../components/ui/SectionWrapper'
 
 function Contact() {
   const { t } = useTranslation()
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm()
+
+  const whatsappUrl = `https://wa.me/${siteConfig.contact.phoneWhatsapp}?text=${encodeURIComponent('Bonjour, je souhaite des informations.')}`
+  const mapsSrc = `https://www.google.com/maps?q=${encodeURIComponent(siteConfig.contact.address)}&output=embed`
 
   const onSubmit = async (data) => {
     // TODO: intégrer EmailJS ou Netlify Forms
@@ -36,10 +39,11 @@ function Contact() {
           <div className="lg:col-span-2 space-y-6">
             {[
               { icon: Phone, label: t('contact.phone'), value: siteConfig.contact.phone, href: `tel:${siteConfig.contact.phone}` },
+              { icon: MessageCircle, label: 'WhatsApp', value: siteConfig.contact.phone, href: whatsappUrl, external: true },
               { icon: Mail, label: t('contact.email'), value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
               { icon: MapPin, label: t('contact.address'), value: siteConfig.contact.address },
               { icon: Clock, label: t('contact.hours'), value: t('contact.hoursValue') },
-            ].map(({ icon: Icon, label, value, href }) => (
+            ].map(({ icon: Icon, label, value, href, external }) => (
               <motion.div
                 key={label}
                 initial={{ opacity: 0, x: -20 }}
@@ -53,7 +57,11 @@ function Contact() {
                 <div>
                   <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">{label}</p>
                   {href ? (
-                    <a href={href} className="text-[#1B4F72] font-semibold hover:text-[#F39C12] transition-colors">
+                    <a
+                      href={href}
+                      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      className="text-[#1B4F72] font-semibold hover:text-[#F39C12] transition-colors"
+                    >
                       {value}
                     </a>
                   ) : (
@@ -116,6 +124,25 @@ function Contact() {
             </form>
           </motion.div>
         </div>
+
+        {/* Carte Google Maps */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 rounded-2xl overflow-hidden shadow-lg border"
+        >
+          <iframe
+            title="Localisation AviaTours"
+            src={mapsSrc}
+            width="100%"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </motion.div>
       </SectionWrapper>
     </>
   )

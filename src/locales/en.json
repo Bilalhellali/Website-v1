@@ -1,7 +1,10 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About",
+    "voyages": "Group Tours",
+    "visa": "Visa",
+    "hotels": "Hotels",
+    "about": "About Us",
     "destinations": "Destinations",
     "circuits": "Tours",
     "gallery": "Gallery",
@@ -10,6 +13,7 @@
   },
   "footer": {
     "links": "Navigation",
+    "services": "Our Services",
     "popularDestinations": "Popular Destinations",
     "contact": "Contact",
     "rights": "All rights reserved.",

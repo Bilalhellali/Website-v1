@@ -1,7 +1,10 @@
 {
   "nav": {
     "home": "Accueil",
-    "about": "À propos",
+    "voyages": "Voyages Organisés",
+    "visa": "Visa",
+    "hotels": "Hôtels",
+    "about": "À Propos de Nous",
     "destinations": "Destinations",
     "circuits": "Circuits",
     "gallery": "Galerie",
@@ -10,6 +13,7 @@
   },
   "footer": {
     "links": "Navigation",
+    "services": "Nos services",
     "popularDestinations": "Destinations populaires",
     "contact": "Contact",
     "rights": "Tous droits réservés.",
@@ -21,7 +25,7 @@
     "title": "Découvrez l'Algérie",
     "subtitle": "Des voyages authentiques et inoubliables à travers les merveilles de l'Algérie — du Sahara majestueux aux côtes méditerranéennes.",
     "cta": {
-      "explore": "Explorer les destinations",
+      "explore": "Découvrir nos voyages",
       "quote": "Demander un devis"
     },
     "stats": {

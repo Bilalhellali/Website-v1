@@ -41,7 +41,7 @@ function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/destinations" className="btn-secondary flex items-center gap-2 justify-center text-lg py-4 px-8">
+            <Link to="/voyages-organises" className="btn-secondary flex items-center gap-2 justify-center text-lg py-4 px-8">
               {t('hero.cta.explore')} <ArrowRight size={20} />
             </Link>
             <Link to="/devis" className="btn-outline border-white text-white hover:bg-white hover:text-[#1B4F72] flex items-center gap-2 justify-center text-lg py-4 px-8">

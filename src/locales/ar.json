@@ -1,6 +1,9 @@
 {
   "nav": {
     "home": "الرئيسية",
+    "voyages": "رحلات منظمة",
+    "visa": "تأشيرة",
+    "hotels": "فنادق",
     "about": "من نحن",
     "destinations": "الوجهات",
     "circuits": "الجولات",
@@ -10,6 +13,7 @@
   },
   "footer": {
     "links": "التنقل",
+    "services": "خدماتنا",
     "popularDestinations": "الوجهات الشعبية",
     "contact": "تواصل معنا",
     "rights": "جميع الحقوق محفوظة.",
