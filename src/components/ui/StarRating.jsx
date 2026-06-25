@@ -7,11 +7,7 @@ function StarRating({ rating, max = 5 }) {
         <Star
           key={i}
           size={16}
-          className={i < rating ? 'fill-[#F39C12] text-[#F39C12]' : 'text-gray-300'}
+          style={i < rating ? { fill: 'var(--dune)', color: 'var(--dune)' } : { color: 'rgba(255,255,255,0.2)' }}
+          className=""
         />
-      ))}
-    </div>
-  )
-}
-
-export default StarRating
+  

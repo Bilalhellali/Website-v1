@@ -4,85 +4,84 @@ import { motion } from 'framer-motion'
 import { ArrowRight, MapPin, Star, Users } from 'lucide-react'
 import { siteConfig } from '../../config/siteConfig'
 
+/* ----------------------------------------------------------------
+   Lignes topographiques SVG — élément signature de l'identité visuelle
+   Inspirées des cartes cartographiques du Sahara algérien
+   ---------------------------------------------------------------- */
+function TopographicLines() {
+  return (
+    <svg
+      aria-hidden="true"
+      style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        opacity: 0.13,
+        pointerEvents: 'none',
+      }}
+      viewBox="0 0 1440 900"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Courbes de niveau — terrain désertique stylisé */}
+      <g stroke="#C4853A" strokeWidth="1" fill="none">
+        <path d="M-100,650 Q200,580 500,620 Q800,660 1100,590 Q1300,540 1540,600" />
+        <path d="M-100,600 Q250,520 550,565 Q850,605 1150,530 Q1350,480 1540,545" />
+        <path d="M-100,550 Q300,460 600,510 Q900,555 1200,475 Q1400,425 1540,490" />
+        <path d="M-100,500 Q350,400 650,455 Q950,505 1250,420 Q1450,370 1540,435" />
+        <path d="M-100,450 Q400,340 700,400 Q1000,455 1300,365 Q1480,315 1540,380" />
+        <path d="M-100,400 Q450,280 750,345 Q1050,405 1350,310 Q1490,260 1540,325" />
+        <path d="M-100,350 Q500,220 800,290 Q1100,355 1380,255 Q1495,205 1540,270" />
+        <path d="M-100,300 Q550,160 850,235 Q1150,305 1400,200 Q1500,150 1540,215" />
+        <path d="M-100,250 Q600,100 900,180 Q1200,255 1420,145 Q1505,95 1540,160" />
+        <path d="M-100,200 Q650,40 950,125 Q1250,205 1440,90 Q1510,40 1540,105" />
+        {/* Courbes supplémentaires dans la partie basse */}
+        <path d="M-100,700 Q200,640 480,675 Q780,710 1080,645 Q1300,600 1540,655" />
+        <path d="M-100,750 Q180,700 460,730 Q760,760 1060,700 Q1290,660 1540,710" />
+        <path d="M-100,800 Q160,760 440,785 Q740,810 1040,755 Q1280,720 1540,765" />
+        <path d="M-100,850 Q140,820 420,840 Q720,860 1020,810 Q1270,780 1540,820" />
+      </g>
+      {/* Points de coordonnées — effet carte */}
+      <g fill="#C4853A">
+        <circle cx="380" cy="520" r="2.5" opacity="0.6" />
+        <circle cx="750" cy="445" r="2" opacity="0.5" />
+        <circle cx="1100" cy="390" r="2.5" opacity="0.6" />
+        <circle cx="200" cy="600" r="1.5" opacity="0.4" />
+        <circle cx="980" cy="310" r="2" opacity="0.5" />
+        <circle cx="560" cy="470" r="1.5" opacity="0.4" />
+        <circle cx="1300" cy="280" r="2" opacity="0.5" />
+      </g>
+      {/* Lignes de coordonnées fines */}
+      <g stroke="#C4853A" strokeWidth="0.5" opacity="0.3">
+        <line x1="380" y1="480" x2="380" y2="560" />
+        <line x1="750" y1="405" x2="750" y2="485" />
+        <line x1="1100" y1="350" x2="1100" y2="430" />
+      </g>
+    </svg>
+  )
+}
+
 function Hero() {
   const { t } = useTranslation()
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
+    <section
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        overflow: 'hidden',
+        backgroundColor: 'var(--night)',
+      }}
+    >
+      {/* Photo de fond */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a2e]/70 via-[#1B4F72]/50 to-[#1a1a2e]/80" />
-      </div>
-
-      {/* Fallback gradient if no image */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] via-[#1B4F72] to-[#154360] -z-10" />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 text-center text-white py-32">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="inline-block bg-[#F39C12]/20 border border-[#F39C12]/50 text-[#F39C12] text-sm font-medium px-4 py-2 rounded-full mb-6">
-            🇩🇿 {t('hero.badge')}
-          </span>
-
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            {t('hero.title')}
-            <span className="block text-[#F39C12]">{siteConfig.tagline}</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed">
-            {t('hero.subtitle')}
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/voyages-organises" className="btn-secondary flex items-center gap-2 justify-center text-lg py-4 px-8">
-              {t('hero.cta.explore')} <ArrowRight size={20} />
-            </Link>
-            <Link to="/devis" className="btn-outline border-white text-white hover:bg-white hover:text-[#1B4F72] flex items-center gap-2 justify-center text-lg py-4 px-8">
-              {t('hero.cta.quote')}
-            </Link>
-          </div>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto"
-        >
-          {[
-            { icon: MapPin, value: '50+', label: t('hero.stats.destinations') },
-            { icon: Users, value: '2000+', label: t('hero.stats.clients') },
-            { icon: Star, value: '4.9/5', label: t('hero.stats.rating') },
-          ].map(({ icon: Icon, value, label }) => (
-            <div key={label} className="text-center">
-              <Icon size={24} className="text-[#F39C12] mx-auto mb-2" />
-              <div className="text-2xl font-bold">{value}</div>
-              <div className="text-xs text-gray-300">{label}</div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60"
-      >
-        <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-1.5 bg-white rounded-full" />
-        </div>
-      </motion.div>
-    </section>
-  )
-}
-
-export default Hero
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: "url('/images/hero-bg.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        

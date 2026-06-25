@@ -8,23 +8,44 @@ function CTABanner() {
   const { t } = useTranslation()
 
   return (
-    <section className="bg-gradient-to-r from-[#F39C12] to-[#E67E22] py-16">
-      <div className="max-w-7xl mx-auto px-4 text-center text-white">
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('cta.title')}</h2>
-          <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto">{t('cta.subtitle')}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/devis" className="bg-white text-[#F39C12] font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-2 justify-center">
-              {t('cta.quoteBtn')} <ArrowRight size={18} />
-            </Link>
-            <a href={`tel:${siteConfig.contact.phone}`} className="border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2 justify-center">
-              <Phone size={18} /> {siteConfig.contact.phone}
-            </a>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
+    <section style={{
+      backgroundColor: 'var(--parchment)',
+      padding: '6rem 0',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
+      {/* Accent géométrique décoratif */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        width: '40%',
+        height: '100%',
+        background: 'linear-gradient(135deg, transparent 0%, rgba(196,133,58,0.07) 100%)',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '8px',
+        height: '100%',
+        backgroundColor: 'var(--dune)',
+      }} />
 
-export default CTABanner
+      <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 1.5rem' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr auto',
+            alignItems: 'center',
+            gap: '3rem',
+          }}
+          className="grid-cols-1 lg:grid-cols-[1fr_auto]"
+        >
+          {/* Texte */}
+          <div>
+            <spa

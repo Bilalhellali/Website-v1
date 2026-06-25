@@ -1,10 +1,18 @@
 @import "tailwindcss";
 
+/* ============================================================
+   DESIGN SYSTEM — Sahara Editorial
+   Palette inspirée du paysage algérien : désert, nuit et oasis
+   ============================================================ */
+
 @layer base {
   :root {
-    --color-primary: #1B4F72;
-    --color-secondary: #F39C12;
-    --color-accent: #27AE60;
+    --night:     #0D0B18;
+    --dune:      #C4853A;
+    --parchment: #F6EDD8;
+    --ink:       #16122D;
+    --oasis:     #1C6B5C;
+    --mist:      #E9E3D9;
   }
 
   html {
@@ -12,7 +20,11 @@
   }
 
   body {
-    @apply font-sans text-gray-800 antialiased;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    color: var(--ink);
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   [dir="rtl"] {
@@ -21,27 +33,16 @@
 }
 
 @layer components {
+  /* ---- Boutons (bords francs, pas de radius) ---- */
   .btn-primary {
-    @apply bg-[#1B4F72] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#154360] transition-all duration-300 shadow-md hover:shadow-lg;
-  }
-
-  .btn-secondary {
-    @apply bg-[#F39C12] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#D68910] transition-all duration-300 shadow-md hover:shadow-lg;
-  }
-
-  .btn-outline {
-    @apply border-2 border-[#1B4F72] text-[#1B4F72] px-6 py-3 rounded-lg font-semibold hover:bg-[#1B4F72] hover:text-white transition-all duration-300;
-  }
-
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold text-center text-[#1B4F72] mb-4;
-  }
-
-  .section-subtitle {
-    @apply text-lg text-gray-500 text-center mb-12 max-w-2xl mx-auto;
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
-  }
-}
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background-color: var(--dune);
+    color: #ff
