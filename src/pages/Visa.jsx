@@ -8,9 +8,8 @@ import SectionWrapper from '../components/ui/SectionWrapper'
 import PageHero from '../components/ui/PageHero'
 import CTABanner from '../components/sections/CTABanner'
 
-// Destinations de visa proposées — modifiable
 const visaServices = [
-  { flag: '🇪🇺', name: 'Visa Schengen', desc: 'Tourisme, affaires ou famille pour l\'espace Schengen.', delay: '10 à 15 jours' },
+  { flag: '🇪🇺', name: 'Visa Schengen', desc: "Tourisme, affaires ou famille pour l'espace Schengen.", delay: '10 à 15 jours' },
   { flag: '🇦🇪', name: 'Visa Émirats (Dubaï)', desc: 'Visa touristique 30 ou 60 jours, traitement express.', delay: '3 à 5 jours' },
   { flag: '🇹🇷', name: 'Visa Turquie', desc: 'e-Visa et visa touristique pour la Turquie.', delay: '2 à 4 jours' },
   { flag: '🇸🇦', name: 'Visa Arabie Saoudite', desc: 'Visa Omra, tourisme et visites familiales.', delay: '5 à 10 jours' },
@@ -28,7 +27,7 @@ const steps = [
 const reassurance = [
   { icon: ShieldCheck, title: 'Dossier sécurisé', desc: 'Chaque document est vérifié pour maximiser vos chances.' },
   { icon: Clock, title: 'Gain de temps', desc: 'Nous gérons les démarches administratives à votre place.' },
-  { icon: HeartHandshake, title: 'Accompagnement humain', desc: 'Un conseiller dédié vous suit jusqu\'à l\'obtention.' },
+  { icon: HeartHandshake, title: 'Accompagnement humain', desc: "Un conseiller dédié vous suit jusqu'à l'obtention." },
 ]
 
 function Visa() {
@@ -45,36 +44,54 @@ function Visa() {
       <PageHero
         badge="📄 Dossiers vérifiés"
         title="Demande de Visa"
-        subtitle="Constitution et suivi complet de votre dossier de visa, pour un traitement rapide, fiable et sans stress."
+        subtitle="Constitution et suivi complet de votre dossier, pour un traitement rapide et sans stress."
       />
 
       {/* Destinations visa */}
       <SectionWrapper>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="section-title">Pour quelle destination ?</h2>
-          <p className="section-subtitle">Nous traitons les demandes de visa pour les principales destinations.</p>
-        </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <span className="section-label">Destinations</span>
+        <h2 className="section-title">Pour quelle destination ?</h2>
+        <div className="divider-dune" />
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '1px',
+          backgroundColor: 'var(--mist)',
+          marginTop: '1rem',
+        }}>
           {visaServices.map((visa, i) => (
             <motion.div
               key={visa.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="bg-white rounded-2xl p-6 shadow-md card-hover border"
+              transition={{ delay: i * 0.06 }}
+              style={{ backgroundColor: '#ffffff', padding: '1.75rem' }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-3xl">{visa.flag}</span>
-                <h3 className="text-lg font-bold text-[#1B4F72]">{visa.name}</h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                <span style={{ fontSize: '1.75rem' }}>{visa.flag}</span>
+                <h3 style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: '1.15rem', fontWeight: 600, color: 'var(--ink)',
+                }}>{visa.name}</h3>
               </div>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4">{visa.desc}</p>
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-[#27AE60] bg-[#27AE60]/10 px-3 py-1 rounded-full">
-                  Délai : {visa.delay}
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.85rem', fontWeight: 300, color: '#6b6580', lineHeight: 1.6, marginBottom: '1.25rem' }}>{visa.desc}</p>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: '0.6rem', letterSpacing: '0.08em',
+                  textTransform: 'uppercase', color: 'var(--oasis)',
+                  border: '1px solid var(--oasis)', padding: '0.25rem 0.6rem',
+                }}>
+                  {visa.delay}
                 </span>
-                <Link to="/devis" className="text-sm font-semibold text-[#1B4F72] hover:text-[#F39C12] inline-flex items-center gap-1 transition-colors">
-                  Demander <ArrowRight size={14} />
+                <Link to="/devis" style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: '0.6rem', letterSpacing: '0.1em',
+                  textTransform: 'uppercase', color: 'var(--dune)',
+                  textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.35rem',
+                }}>
+                  Demander <ArrowRight size={12} />
                 </Link>
               </div>
             </motion.div>
@@ -83,27 +100,28 @@ function Visa() {
       </SectionWrapper>
 
       {/* Processus */}
-      <SectionWrapper className="bg-[#F8F9FA]">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="section-title">Notre processus en 4 étapes</h2>
-          <p className="section-subtitle">Un accompagnement clair, du premier contact à l'obtention de votre visa.</p>
-        </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <SectionWrapper style={{ backgroundColor: 'var(--parchment)' }} className="bg-[#F6EDD8]">
+        <span className="section-label">Processus</span>
+        <h2 className="section-title">Notre processus en 4 étapes</h2>
+        <div className="divider-dune" />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1px', backgroundColor: 'var(--mist)', marginTop: '1rem' }}>
           {steps.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="relative bg-white rounded-2xl p-6 shadow-sm border text-center card-hover"
+              style={{ backgroundColor: '#fff', padding: '2rem 1.75rem', position: 'relative' }}
             >
-              <div className="w-12 h-12 mx-auto bg-[#1B4F72]/10 rounded-xl flex items-center justify-center mb-4">
-                <Icon size={24} className="text-[#1B4F72]" />
-              </div>
-              <span className="absolute top-4 right-4 text-3xl font-bold text-gray-100">{i + 1}</span>
-              <h3 className="font-bold text-[#1B4F72] mb-1">{title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              <span style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: '4rem', fontWeight: 600, color: 'var(--mist)',
+                lineHeight: 1, position: 'absolute', top: '1rem', right: '1.25rem',
+              }}>{i + 1}</span>
+              <Icon size={22} style={{ color: 'var(--oasis)', marginBottom: '0.875rem' }} />
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.15rem', fontWeight: 600, color: 'var(--ink)', marginBottom: '0.4rem' }}>{title}</h3>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.85rem', fontWeight: 300, color: '#6b6580', lineHeight: 1.6 }}>{desc}</p>
             </motion.div>
           ))}
         </div>
@@ -111,32 +129,30 @@ function Visa() {
 
       {/* Réassurance */}
       <SectionWrapper>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
           {reassurance.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex gap-4 p-6 rounded-2xl bg-white border border-gray-100 shadow-sm card-hover"
+              style={{ display: 'flex', gap: '1rem', padding: '1.5rem', borderLeft: '3px solid var(--oasis)', backgroundColor: '#ffffff', border: '1px solid var(--mist)', borderLeft: '3px solid var(--oasis)' }}
             >
-              <div className="w-12 h-12 bg-[#27AE60]/10 rounded-xl flex items-center justify-center shrink-0">
-                <Icon size={24} className="text-[#27AE60]" />
-              </div>
+              <Icon size={20} style={{ color: 'var(--oasis)', flexShrink: 0, marginTop: '2px' }} />
               <div>
-                <h3 className="font-bold text-[#1B4F72] mb-1">{title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                <h3 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.9rem', fontWeight: 600, color: 'var(--ink)', marginBottom: '0.35rem' }}>{title}</h3>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.85rem', fontWeight: 300, color: '#6b6580', lineHeight: 1.6 }}>{desc}</p>
               </div>
             </motion.div>
           ))}
         </div>
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/devis" className="btn-primary flex items-center justify-center gap-2">
-            Démarrer ma demande <ArrowRight size={18} />
+        <div style={{ marginTop: '2.5rem', display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
+          <Link to="/devis" className="btn-primary">
+            Démarrer ma demande <ArrowRight size={16} />
           </Link>
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-outline flex items-center justify-center gap-2">
-            <Check size={18} /> Poser une question sur WhatsApp
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary">
+            <Check size={16} /> Question sur WhatsApp
           </a>
         </div>
       </SectionWrapper>

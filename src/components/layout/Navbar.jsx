@@ -182,4 +182,71 @@ function Navbar() {
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-    
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div style={{
+          backgroundColor: '#ffffff',
+          borderTop: '1px solid var(--mist)',
+          padding: '1.5rem',
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                onClick={() => setIsMenuOpen(false)}
+                style={({ isActive }) => ({
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: '0.75rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                  color: isActive ? 'var(--dune)' : 'var(--ink)',
+                  padding: '0.875rem 0',
+                  borderBottom: '1px solid var(--mist)',
+                })}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+            <div style={{ display: 'flex', gap: '0.75rem', paddingTop: '1rem', flexWrap: 'wrap' }}>
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => { changeLanguage(lang.code); setIsMenuOpen(false) }}
+                  style={{
+                    padding: '0.4rem 0.875rem',
+                    border: '1px solid',
+                    borderColor: i18n.language === lang.code ? 'var(--dune)' : 'var(--mist)',
+                    backgroundColor: i18n.language === lang.code ? 'var(--dune)' : 'transparent',
+                    color: i18n.language === lang.code ? '#fff' : 'var(--ink)',
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: '0.65rem',
+                    letterSpacing: '0.08em',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {lang.flag} {lang.label}
+                </button>
+              ))}
+            </div>
+            <Link
+              to="/devis"
+              onClick={() => setIsMenuOpen(false)}
+              className="btn-primary"
+              style={{ marginTop: '1rem', textAlign: 'center' }}
+            >
+              {t('nav.quote')}
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
+  )
+}
+
+export default Navbar

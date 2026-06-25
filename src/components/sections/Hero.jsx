@@ -84,4 +84,242 @@ function Hero() {
           backgroundImage: "url('/images/hero-bg.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-        
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Dégradé directionnel — plus dense à gauche pour lisibilité texte */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(105deg, rgba(13,11,24,0.88) 0%, rgba(13,11,24,0.65) 55%, rgba(13,11,24,0.30) 100%)',
+        }} />
+      </div>
+
+      {/* Fond de secours si pas d'image */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(135deg, #0D0B18 0%, #1a1430 50%, #0f1a2e 100%)',
+        zIndex: -1,
+      }} />
+
+      {/* Lignes topographiques — élément signature */}
+      <TopographicLines />
+
+      {/* Trait vertical décoratif gauche */}
+      <div style={{
+        position: 'absolute',
+        left: '1.5rem',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        width: '1px',
+        height: '35vh',
+        background: 'linear-gradient(to bottom, transparent, rgba(196,133,58,0.4), transparent)',
+      }} />
+
+      {/* Contenu principal — aligné à gauche, éditorial */}
+      <div style={{
+        position: 'relative',
+        zIndex: 10,
+        maxWidth: '80rem',
+        margin: '0 auto',
+        padding: '8rem 1.5rem 4rem',
+        width: '100%',
+      }}>
+        <div style={{ maxWidth: '720px' }}>
+
+          {/* Label monospace */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: '0.65rem',
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              color: 'var(--dune)',
+              display: 'block',
+              marginBottom: '1.5rem',
+            }}>
+              🇩🇿 {t('hero.badge') || 'Agence de voyage · Algérie'}
+            </span>
+          </motion.div>
+
+          {/* Titre principal — Cormorant Garamond grande taille */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: 'clamp(3rem, 8vw, 6.5rem)',
+              fontWeight: 600,
+              lineHeight: 1.05,
+              color: '#ffffff',
+              marginBottom: '0.25rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            {t('hero.title') || 'Découvrez'}
+          </motion.h1>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: 'clamp(3rem, 8vw, 6.5rem)',
+              fontWeight: 600,
+              lineHeight: 1.05,
+              fontStyle: 'italic',
+              color: 'var(--dune)',
+              marginBottom: '1.5rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            {siteConfig.tagline}
+          </motion.h1>
+
+          {/* Trait dune */}
+          <motion.div
+            initial={{ scaleX: 0, originX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            style={{
+              width: '3rem',
+              height: '2px',
+              backgroundColor: 'var(--dune)',
+              marginBottom: '1.75rem',
+            }}
+          />
+
+          {/* Sous-titre */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.35 }}
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '1.05rem',
+              fontWeight: 300,
+              color: 'rgba(255,255,255,0.72)',
+              lineHeight: 1.75,
+              marginBottom: '2.5rem',
+              maxWidth: '480px',
+            }}
+          >
+            {t('hero.subtitle') || siteConfig.description}
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
+          >
+            <Link to="/voyages-organises" className="btn-primary">
+              {t('hero.cta.explore') || 'Voir nos voyages'} <ArrowRight size={16} />
+            </Link>
+            <Link to="/devis" className="btn-outline">
+              {t('hero.cta.quote') || 'Demander un devis'}
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Statistiques — rangée horizontale, alignée gauche */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          style={{
+            display: 'flex',
+            gap: '0',
+            marginTop: '5rem',
+            borderTop: '1px solid rgba(196,133,58,0.2)',
+            paddingTop: '2rem',
+            flexWrap: 'wrap',
+          }}
+        >
+          {[
+            { icon: MapPin, value: '50+', label: t('hero.stats.destinations') || 'Destinations' },
+            { icon: Users, value: '2 000+', label: t('hero.stats.clients') || 'Voyageurs satisfaits' },
+            { icon: Star, value: '4.9', label: t('hero.stats.rating') || 'Note moyenne' },
+          ].map(({ icon: Icon, value, label }, i) => (
+            <div
+              key={label}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                padding: '0 2.5rem 0 0',
+                marginRight: '2.5rem',
+                borderRight: i < 2 ? '1px solid rgba(255,255,255,0.1)' : 'none',
+              }}
+            >
+              <Icon size={18} style={{ color: 'var(--dune)', flexShrink: 0 }} />
+              <div>
+                <div style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: '1.6rem',
+                  fontWeight: 600,
+                  color: '#ffffff',
+                  lineHeight: 1,
+                  marginBottom: '0.2rem',
+                }}>
+                  {value}
+                </div>
+                <div style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: '0.6rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.45)',
+                }}>
+                  {label}
+                </div>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Indicateur de scroll */}
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+        style={{
+          position: 'absolute',
+          bottom: '2rem',
+          right: '1.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '0.5rem',
+        }}
+      >
+        <span style={{
+          fontFamily: "'Space Mono', monospace",
+          fontSize: '0.55rem',
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.35)',
+          writingMode: 'vertical-rl',
+          transform: 'rotate(180deg)',
+        }}>
+          Scroll
+        </span>
+        <div style={{
+          width: '1px',
+          height: '3rem',
+          background: 'linear-gradient(to bottom, rgba(196,133,58,0.6), transparent)',
+        }} />
+      </motion.div>
+    </section>
+  )
+}
+
+export default Hero

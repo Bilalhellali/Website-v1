@@ -8,4 +8,4 @@ function SectionWrapper({ children, className = '', id = '', style = {} }) {
   )
 }
 
-expo
+export default SectionWrapper

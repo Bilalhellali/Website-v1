@@ -2,9 +2,34 @@ import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion'
-import { FileText, Send } from 'lucide-react'
+import { Send } from 'lucide-react'
 import { siteConfig } from '../config/siteConfig'
 import SectionWrapper from '../components/ui/SectionWrapper'
+import PageHero from '../components/ui/PageHero'
+
+const labelStyle = {
+  fontFamily: "'Space Mono', monospace",
+  fontSize: '0.6rem',
+  letterSpacing: '0.14em',
+  textTransform: 'uppercase',
+  color: '#8b8499',
+  display: 'block',
+  marginBottom: '0.5rem',
+}
+
+const inputStyle = {
+  width: '100%',
+  padding: '0.75rem 1rem',
+  fontFamily: "'DM Sans', sans-serif",
+  fontSize: '0.9rem',
+  fontWeight: 300,
+  color: 'var(--ink)',
+  backgroundColor: '#ffffff',
+  border: '1px solid var(--mist)',
+  outline: 'none',
+  boxSizing: 'border-box',
+  transition: 'border-color 0.2s ease',
+}
 
 function Quote() {
   const { t } = useTranslation()
@@ -16,73 +41,87 @@ function Quote() {
     reset()
   }
 
+  const focus = (e) => { e.target.style.borderColor = 'var(--dune)' }
+  const blur = (e, hasError) => { e.target.style.borderColor = hasError ? '#e05a5a' : 'var(--mist)' }
+
   return (
     <>
       <Helmet>
         <title>Demande de Devis - {siteConfig.name}</title>
       </Helmet>
 
-      <div className="pt-32 pb-16 bg-gradient-to-br from-[#1a1a2e] to-[#1B4F72] text-white text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <FileText size={48} className="text-[#F39C12] mx-auto mb-4" />
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('quote.title')}</h1>
-          <p className="text-lg text-blue-200 max-w-2xl mx-auto">{t('quote.subtitle')}</p>
-        </motion.div>
-      </div>
+      <PageHero
+        badge="Devis gratuit"
+        title={t('quote.title') || 'Demande de Devis'}
+        subtitle={t('quote.subtitle') || 'Répondez à quelques questions, recevez votre devis sous 24h.'}
+      />
 
-      <SectionWrapper className="bg-gray-50">
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg border p-8 md:p-12">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <SectionWrapper style={{ backgroundColor: 'var(--parchment)' }} className="bg-[#F6EDD8]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          style={{ maxWidth: '720px', margin: '0 auto', backgroundColor: '#ffffff', border: '1px solid var(--mist)', padding: '3rem' }}
+        >
+          <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+
+            {/* Nom & Prénom */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.firstName')} *</label>
+                <label style={labelStyle}>{t('form.firstName')} *</label>
                 <input {...register('firstName', { required: true })}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B4F72]"
-                  placeholder="Prénom" />
+                  style={{ ...inputStyle, borderColor: errors.firstName ? '#e05a5a' : 'var(--mist)' }}
+                  onFocus={focus} onBlur={e => blur(e, errors.firstName)} placeholder="Prénom" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.lastName')} *</label>
+                <label style={labelStyle}>{t('form.lastName')} *</label>
                 <input {...register('lastName', { required: true })}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B4F72]"
-                  placeholder="Nom" />
+                  style={{ ...inputStyle, borderColor: errors.lastName ? '#e05a5a' : 'var(--mist)' }}
+                  onFocus={focus} onBlur={e => blur(e, errors.lastName)} placeholder="Nom" />
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            {/* Email & Téléphone */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.email')} *</label>
+                <label style={labelStyle}>{t('form.email')} *</label>
                 <input {...register('email', { required: true })} type="email"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B4F72]"
-                  placeholder="email@exemple.com" />
+                  style={{ ...inputStyle, borderColor: errors.email ? '#e05a5a' : 'var(--mist)' }}
+                  onFocus={focus} onBlur={e => blur(e, errors.email)} placeholder="email@exemple.com" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('form.phone')} *</label>
+                <label style={labelStyle}>{t('form.phone')} *</label>
                 <input {...register('phone', { required: true })} type="tel"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B4F72]"
-                  placeholder="+213 XX XX XX XX" />
+                  style={{ ...inputStyle, borderColor: errors.phone ? '#e05a5a' : 'var(--mist)' }}
+                  onFocus={focus} onBlur={e => blur(e, errors.phone)} placeholder="+213 XX XX XX XX" />
               </div>
             </div>
+
+            {/* Destination */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t('quote.destination')} *</label>
+              <label style={labelStyle}>{t('quote.destination')} *</label>
               <select {...register('destination', { required: true })}
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B4F72]">
-                <option value="">-- Choisir une destination --</option>
+                style={{ ...inputStyle, borderColor: errors.destination ? '#e05a5a' : 'var(--mist)', cursor: 'pointer' }}
+                onFocus={focus} onBlur={e => blur(e, errors.destination)}>
+                <option value="">— Choisir une destination —</option>
                 {siteConfig.destinations.map(d => (
                   <option key={d.id} value={d.name.fr}>{d.name.fr}</option>
                 ))}
                 <option value="Autre">Autre / Sur mesure</option>
               </select>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+            {/* Dates, durée, voyageurs */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('quote.departureDate')}</label>
+                <label style={labelStyle}>{t('quote.departureDate')}</label>
                 <input {...register('departureDate')} type="date"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B4F72]" />
+                  style={inputStyle} onFocus={focus} onBlur={e => blur(e, false)} />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('quote.duration')}</label>
+                <label style={labelStyle}>{t('quote.duration')}</label>
                 <select {...register('duration')}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B4F72]">
-                  <option value="">-- Durée --</option>
+                  style={{ ...inputStyle, cursor: 'pointer' }} onFocus={focus} onBlur={e => blur(e, false)}>
+                  <option value="">— Durée —</option>
                   <option value="1-3">1 à 3 jours</option>
                   <option value="4-7">4 à 7 jours</option>
                   <option value="8-14">8 à 14 jours</option>
@@ -90,36 +129,41 @@ function Quote() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('quote.travelers')}</label>
+                <label style={labelStyle}>{t('quote.travelers')}</label>
                 <input {...register('travelers')} type="number" min="1" max="50"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B4F72]"
-                  placeholder="Nombre" />
+                  style={inputStyle} onFocus={focus} onBlur={e => blur(e, false)} placeholder="Nbre" />
               </div>
             </div>
+
+            {/* Budget */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t('quote.budget')}</label>
+              <label style={labelStyle}>{t('quote.budget')}</label>
               <select {...register('budget')}
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B4F72]">
-                <option value="">-- Budget estimé --</option>
-                <option value="economic">Économique (- de 20 000 DA/pers)</option>
-                <option value="standard">Standard (20 000 - 50 000 DA/pers)</option>
-                <option value="comfort">Confort (50 000 - 100 000 DA/pers)</option>
-                <option value="luxury">Luxe (+ de 100 000 DA/pers)</option>
+                style={{ ...inputStyle, cursor: 'pointer' }} onFocus={focus} onBlur={e => blur(e, false)}>
+                <option value="">— Budget estimé —</option>
+                <option value="economic">Économique (moins de 20 000 DA/pers)</option>
+                <option value="standard">Standard (20 000 – 50 000 DA/pers)</option>
+                <option value="comfort">Confort (50 000 – 100 000 DA/pers)</option>
+                <option value="luxury">Luxe (plus de 100 000 DA/pers)</option>
               </select>
             </div>
+
+            {/* Notes */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t('quote.notes')}</label>
+              <label style={labelStyle}>{t('quote.notes')}</label>
               <textarea {...register('notes')} rows={4}
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B4F72] resize-none"
+                style={{ ...inputStyle, resize: 'none' }}
+                onFocus={focus} onBlur={e => blur(e, false)}
                 placeholder={t('quote.notesPlaceholder')} />
             </div>
-            <button type="submit" disabled={isSubmitting}
-              className="btn-primary w-full flex items-center justify-center gap-2 text-lg py-4 disabled:opacity-60">
-              <Send size={20} />
+
+            <button type="submit" disabled={isSubmitting} className="btn-primary"
+              style={{ justifyContent: 'center', padding: '1rem', opacity: isSubmitting ? 0.6 : 1 }}>
+              <Send size={16} />
               {isSubmitting ? t('form.sending') : t('quote.submit')}
             </button>
           </form>
-        </div>
+        </motion.div>
       </SectionWrapper>
     </>
   )

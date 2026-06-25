@@ -114,4 +114,152 @@ function Footer() {
               {t('footer.links')}
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-   
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: '0.825rem',
+                      fontWeight: 300,
+                      color: 'rgba(255,255,255,0.55)',
+                      textDecoration: 'none',
+                      transition: 'color 0.2s ease',
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Colonne 3 — Services */}
+          <div>
+            <h3 style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: '0.6rem',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color: 'var(--dune)',
+              marginBottom: '1.25rem',
+            }}>
+              {t('footer.services')}
+            </h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              {siteConfig.services.map((service) => (
+                <li key={service.id}>
+                  <Link
+                    to={service.to}
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: '0.825rem',
+                      fontWeight: 300,
+                      color: 'rgba(255,255,255,0.55)',
+                      textDecoration: 'none',
+                      transition: 'color 0.2s ease',
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}
+                  >
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Colonne 4 — Contact */}
+          <div>
+            <h3 style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: '0.6rem',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color: 'var(--dune)',
+              marginBottom: '1.25rem',
+            }}>
+              {t('footer.contact')}
+            </h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                <MapPin size={14} style={{ color: 'var(--dune)', flexShrink: 0, marginTop: '2px' }} />
+                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.825rem', fontWeight: 300, lineHeight: 1.6 }}>
+                  {siteConfig.contact.address}
+                </span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <Phone size={14} style={{ color: 'var(--dune)', flexShrink: 0 }} />
+                <a
+                  href={`tel:${siteConfig.contact.phone}`}
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: '0.825rem',
+                    fontWeight: 300,
+                    color: 'rgba(255,255,255,0.55)',
+                    textDecoration: 'none',
+                    transition: 'color 0.2s',
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}
+                >
+                  {siteConfig.contact.phone}
+                </a>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <Mail size={14} style={{ color: 'var(--dune)', flexShrink: 0 }} />
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: '0.825rem',
+                    fontWeight: 300,
+                    color: 'rgba(255,255,255,0.55)',
+                    textDecoration: 'none',
+                    transition: 'color 0.2s',
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}
+                >
+                  {siteConfig.contact.email}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Séparateur */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: '2rem' }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '1rem',
+          }}>
+            <p style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: '0.6rem',
+              letterSpacing: '0.08em',
+              color: 'rgba(255,255,255,0.25)',
+            }}>
+              © {year} {siteConfig.name}. {t('footer.rights')}
+            </p>
+            <p style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: '0.6rem',
+              letterSpacing: '0.08em',
+              color: 'rgba(255,255,255,0.25)',
+            }}>
+              {t('footer.madeWith')} ❤️ {t('footer.inAlgeria')}
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+export default Footer

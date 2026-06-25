@@ -72,4 +72,74 @@ function Services() {
               </div>
 
               {/* Titre */}
-              <h3 styl
+              <h3 style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontSize: '1.4rem',
+                fontWeight: 600,
+                color: 'var(--ink)',
+                marginBottom: '0.5rem',
+                lineHeight: 1.2,
+              }}>
+                {service.title}
+              </h3>
+
+              {/* Description */}
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '0.875rem',
+                fontWeight: 300,
+                color: '#6b6580',
+                lineHeight: 1.7,
+                marginBottom: '1.25rem',
+              }}>
+                {service.desc}
+              </p>
+
+              {/* Points */}
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                {service.points.map((point) => (
+                  <li
+                    key={point}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: '0.825rem',
+                      color: 'var(--ink)',
+                    }}
+                  >
+                    <Check size={14} style={{ color: accent, flexShrink: 0 }} />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Lien */}
+              <Link
+                to={service.to}
+                style={{
+                  marginTop: 'auto',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: accent,
+                  textDecoration: 'none',
+                  transition: 'gap 0.2s ease',
+                }}
+              >
+                En savoir plus <ArrowRight size={14} />
+              </Link>
+            </motion.div>
+          )
+        })}
+      </div>
+    </SectionWrapper>
+  )
+}
+
+export default Services

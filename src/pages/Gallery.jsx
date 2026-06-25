@@ -2,9 +2,10 @@ import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { siteConfig } from '../config/siteConfig'
 import SectionWrapper from '../components/ui/SectionWrapper'
+import PageHero from '../components/ui/PageHero'
 
 function Gallery() {
-  const images = siteConfig.destinations.map(d => ({ src: d.image, label: d.name.fr }))
+  const images = siteConfig.destinations.map(d => ({ src: d.image, label: d.name.fr, region: d.region }))
 
   return (
     <>
@@ -12,30 +13,55 @@ function Gallery() {
         <title>Galerie - {siteConfig.name}</title>
       </Helmet>
 
-      <div className="pt-32 pb-16 bg-gradient-to-br from-[#1a1a2e] to-[#1B4F72] text-white text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Galerie Photos</h1>
-          <p className="text-lg text-blue-200 max-w-2xl mx-auto">Laissez-vous inspirer par la beauté de l'Algérie</p>
-        </motion.div>
-      </div>
+      <PageHero
+        badge="Galerie"
+        title="L'Algérie en images"
+        subtitle="Laissez-vous inspirer par la beauté et la diversité des paysages algériens."
+      />
 
       <SectionWrapper>
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+        <div style={{
+          columns: '1',
+          columnGap: '1rem',
+        }}
+          className="sm:columns-2 lg:columns-3"
+        >
           {images.map((img, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.97 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="relative group break-inside-avoid rounded-xl overflow-hidden bg-gradient-to-br from-[#1B4F72] to-[#154360] aspect-[4/3]"
+              style={{
+                position: 'relative',
+                marginBottom: '1rem',
+                breakInside: 'avoid',
+                overflow: 'hidden',
+                backgroundColor: 'var(--night)',
+                aspectRatio: i % 3 === 0 ? '4/5' : '4/3',
+              }}
             >
-              <img src={img.src} alt={img.label}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onError={(e) => { e.target.style.display = 'none' }} />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <p className="text-white font-bold">{img.label}</p>
+              <img
+                src={img.src} alt={img.label}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+                onError={(e) => { e.target.style.display = 'none' }}
+                onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
+                onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+              />
+              {/* Overlay au hover */}
+              <div style={{
+                position: 'absolute', inset: 0,
+                background: 'linear-gradient(to top, rgba(13,11,24,0.75) 0%, transparent 50%)',
+                opacity: 0, transition: 'opacity 0.3s ease',
+              }}
+                onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '0'}
+              >
+                <div style={{ position: 'absolute', bottom: '1.25rem', left: '1.25rem' }}>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '0.2rem' }}>{img.label}</p>
+                  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.55rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--dune)' }}>{img.region}</span>
+                </div>
               </div>
             </motion.div>
           ))}

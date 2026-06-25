@@ -10,4 +10,9 @@ function StarRating({ rating, max = 5 }) {
           style={i < rating ? { fill: 'var(--dune)', color: 'var(--dune)' } : { color: 'rgba(255,255,255,0.2)' }}
           className=""
         />
-  
+      ))}
+    </div>
+  )
+}
+
+export default StarRating

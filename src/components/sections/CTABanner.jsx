@@ -48,4 +48,80 @@ function CTABanner() {
         >
           {/* Texte */}
           <div>
-            <spa
+            <span style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: '0.65rem',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color: 'var(--oasis)',
+              display: 'block',
+              marginBottom: '0.75rem',
+            }}>
+              Votre prochain voyage
+            </span>
+            <h2 style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+              fontWeight: 600,
+              color: 'var(--ink)',
+              lineHeight: 1.1,
+              marginBottom: '1rem',
+            }}>
+              {t('cta.title') || 'Prêt à partir ?'}
+            </h2>
+            <p style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '1rem',
+              fontWeight: 300,
+              color: '#6b6580',
+              lineHeight: 1.7,
+              maxWidth: '480px',
+            }}>
+              {t('cta.subtitle') || "Contactez-nous et recevez un devis personnalisé sous 24h. Notre équipe vous accompagne de la réservation jusqu'au retour."}
+            </p>
+          </div>
+
+          {/* Boutons */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', minWidth: '200px' }}>
+            <Link
+              to="/devis"
+              className="btn-primary"
+              style={{ justifyContent: 'center' }}
+            >
+              {t('cta.quoteBtn') || 'Demander un devis'} <ArrowRight size={16} />
+            </Link>
+            <a
+              href={`tel:${siteConfig.contact.phone}`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 500,
+                fontSize: '0.8rem',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                color: 'var(--ink)',
+                textDecoration: 'none',
+                padding: '0.875rem 2rem',
+                border: '2px solid var(--mist)',
+                transition: 'border-color 0.25s ease, color 0.25s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = 'var(--ink)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'var(--mist)'
+              }}
+            >
+              <Phone size={16} /> {siteConfig.contact.phone}
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+export default CTABanner

@@ -9,10 +9,10 @@ import PageHero from '../components/ui/PageHero'
 import CTABanner from '../components/sections/CTABanner'
 
 const steps = [
-  { icon: Search, title: 'Choisissez', desc: 'Sélectionnez le voyage organisé qui vous fait rêver.' },
-  { icon: FileText, title: 'Demandez un devis', desc: 'Recevez votre devis personnalisé sous 24h, sans engagement.' },
+  { icon: Search, title: 'Choisissez', desc: 'Sélectionnez le voyage qui vous fait rêver.' },
+  { icon: FileText, title: 'Demandez un devis', desc: 'Recevez votre devis personnalisé sous 24h.' },
   { icon: CreditCard, title: 'Réservez', desc: 'Confirmez votre place avec un acompte sécurisé.' },
-  { icon: Plane, title: 'Partez serein', desc: 'On s\'occupe de tout : vol, hôtel, guide et programme.' },
+  { icon: Plane, title: 'Partez serein', desc: "On s'occupe de tout : vol, hôtel, guide et programme." },
 ]
 
 function VoyagesOrganises() {
@@ -27,14 +27,22 @@ function VoyagesOrganises() {
       </Helmet>
 
       <PageHero
-        badge="✈️ Départs garantis"
+        badge="✈ Départs garantis"
         title="Voyages Organisés"
         subtitle="Des séjours en groupe clés en main, avec vol, hébergement, guide et programme complet inclus."
       />
 
       {/* Liste des voyages */}
       <SectionWrapper>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <span className="section-label">Nos circuits</span>
+        <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Choisissez votre aventure</h2>
+        <div className="divider-dune" />
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '1.5rem',
+          marginTop: '2rem',
+        }}>
           {siteConfig.circuits.map((circuit, i) => {
             const name = circuit.name[lang] || circuit.name.fr
             return (
@@ -44,39 +52,74 @@ function VoyagesOrganises() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-md card-hover border"
+                className="card-hover"
+                style={{ backgroundColor: '#ffffff', border: '1px solid var(--mist)', overflow: 'hidden' }}
               >
-                <div className="relative h-56 bg-gradient-to-br from-[#1B4F72] to-[#154360]">
+                {/* Image */}
+                <div style={{
+                  position: 'relative',
+                  height: '220px',
+                  backgroundColor: 'var(--night)',
+                  overflow: 'hidden',
+                }}>
                   <img src={circuit.image} alt={name}
-                    className="w-full h-full object-cover"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(e) => { e.target.style.display = 'none' }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div style={{
+                    position: 'absolute', inset: 0,
+                    background: 'linear-gradient(to top, rgba(13,11,24,0.7) 0%, transparent 60%)',
+                  }} />
                   {circuit.featured && (
-                    <span className="absolute top-4 left-4 bg-[#F39C12] text-white text-xs font-bold px-3 py-1 rounded-full">
-                      ⭐ Populaire
+                    <span style={{
+                      position: 'absolute', top: '1rem', left: '1rem',
+                      backgroundColor: 'var(--dune)', color: '#fff',
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: '0.6rem', letterSpacing: '0.1em',
+                      textTransform: 'uppercase', padding: '0.3rem 0.75rem',
+                    }}>
+                      Populaire
                     </span>
                   )}
-                  <div className="absolute bottom-4 right-4 text-white text-right">
-                    <p className="text-xs opacity-80">À partir de</p>
-                    <p className="text-2xl font-bold">{circuit.price.toLocaleString()} DA</p>
+                  <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', textAlign: 'right', color: '#fff' }}>
+                    <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.6rem', opacity: 0.7, marginBottom: '0.2rem' }}>À partir de</p>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.6rem', fontWeight: 600 }}>
+                      {circuit.price.toLocaleString()} DA
+                    </p>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-[#1B4F72] mb-3">{name}</h3>
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
-                    <span className="flex items-center gap-1"><Clock size={14} /> {circuit.duration}</span>
-                    <span className="flex items-center gap-1"><Users size={14} /> {circuit.groupSize}</span>
-                    <span className="flex items-center gap-1"><Route size={14} /> {circuit.difficulty}</span>
+
+                {/* Contenu */}
+                <div style={{ padding: '1.5rem' }}>
+                  <h3 style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: '1.35rem', fontWeight: 600,
+                    color: 'var(--ink)', marginBottom: '0.75rem',
+                  }}>{name}</h3>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
+                    {[
+                      { Icon: Clock, label: circuit.duration },
+                      { Icon: Users, label: circuit.groupSize },
+                      { Icon: Route, label: circuit.difficulty },
+                    ].map(({ Icon, label }) => (
+                      <span key={label} style={{
+                        display: 'flex', alignItems: 'center', gap: '0.35rem',
+                        fontFamily: "'Space Mono', monospace",
+                        fontSize: '0.6rem', letterSpacing: '0.06em',
+                        color: '#8b8499', textTransform: 'uppercase',
+                      }}>
+                        <Icon size={12} style={{ color: 'var(--dune)' }} /> {label}
+                      </span>
+                    ))}
                   </div>
-                  <div className="flex flex-wrap gap-1 mb-4">
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem', marginBottom: '1.25rem' }}>
                     {circuit.itinerary.map((city, idx) => (
-                      <span key={city} className="text-xs text-gray-500">
+                      <span key={city} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.8rem', color: '#8b8499' }}>
                         {city}{idx < circuit.itinerary.length - 1 ? ' →' : ''}
                       </span>
                     ))}
                   </div>
-                  <Link to="/devis" className="btn-primary w-full text-center flex items-center justify-center gap-2">
-                    Réserver ce voyage <ArrowRight size={16} />
+                  <Link to="/devis" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                    Réserver ce voyage <ArrowRight size={14} />
                   </Link>
                 </div>
               </motion.div>
@@ -86,12 +129,13 @@ function VoyagesOrganises() {
       </SectionWrapper>
 
       {/* Comment ça marche */}
-      <SectionWrapper className="bg-[#F8F9FA]">
+      <SectionWrapper style={{ backgroundColor: 'var(--parchment)' }} className="bg-[#F6EDD8]">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <span className="section-label">Simple & clair</span>
           <h2 className="section-title">Comment ça marche ?</h2>
-          <p className="section-subtitle">Réserver votre voyage organisé n'a jamais été aussi simple.</p>
+          <div className="divider-dune" />
         </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', backgroundColor: 'var(--mist)' }}>
           {steps.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
@@ -99,14 +143,21 @@ function VoyagesOrganises() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="relative bg-white rounded-2xl p-6 shadow-sm border text-center card-hover"
+              style={{ backgroundColor: '#fff', padding: '2rem 1.75rem', position: 'relative' }}
             >
-              <div className="w-12 h-12 mx-auto bg-[#1B4F72]/10 rounded-xl flex items-center justify-center mb-4">
-                <Icon size={24} className="text-[#1B4F72]" />
-              </div>
-              <span className="absolute top-4 right-4 text-3xl font-bold text-gray-100">{i + 1}</span>
-              <h3 className="font-bold text-[#1B4F72] mb-1">{title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              <span style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: '4rem', fontWeight: 600,
+                color: 'var(--mist)', lineHeight: 1,
+                position: 'absolute', top: '1rem', right: '1.25rem',
+              }}>{i + 1}</span>
+              <Icon size={24} style={{ color: 'var(--dune)', marginBottom: '1rem' }} />
+              <h3 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: '1.2rem', fontWeight: 600,
+                color: 'var(--ink)', marginBottom: '0.5rem',
+              }}>{title}</h3>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.85rem', fontWeight: 300, color: '#6b6580', lineHeight: 1.6 }}>{desc}</p>
             </motion.div>
           ))}
         </div>
